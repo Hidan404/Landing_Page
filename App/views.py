@@ -9,3 +9,8 @@ def index():
 @app.route("/static/<path:path>")
 def static_files(path):
     return app.send_static_file(path)
+
+@app.route('/task')
+def task():
+    return render_template('task_app.html')
+

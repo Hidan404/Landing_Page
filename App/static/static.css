@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap+Condensed:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,4 +7,32 @@
 }
 body {
     background-color: #1B1A55;
+}
+.distancia_top {
+    margin-top: 14rem;
+}
+.texto_principal {
+    color: #FFFFFF;
+    font-family: "Asap Condensed", sans-serif;
+    text-align: center;
+    margin-top: 8rem;
+}
+
+#main-title {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+#main-text {
+    font-size: 16px;
+    white-space: pre-line;
+    line-height: 1.5;
+    font-weight: bold;
+    width: 80%;
+    margin: 0 auto;
+}
+a {
+    margin-top: 6rem;
 }
