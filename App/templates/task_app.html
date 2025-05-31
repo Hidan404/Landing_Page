@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="/static/static.css" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
       <div class="row">
         <div class="col">
           <img
-            class="d-block img-fluid d-md-none d-block mx-auto"
+            class="d-block img-fluid d-md-none d-block mx-auto distancia_top"
             src="{{ url_for('static', filename='/Market Research (1) 1.png') }}"
             alt="Descriptive text for the image"
           />
@@ -19,13 +25,13 @@
       </div>
       <div class="row texto_principal">
         <div class="col">
-          <h1 id="main-title">Build the future by completing tasks.</h1>
-          <p id="main-text">
-            Your tasks are bridges leading to the future. By completing them,
-            reach your potential and your dreams.
-          </p>
+          <h1  id="page-title-2">
+            By completing your tasks, you unlock your potential and achieve
+            success.
+          </h1>
+
           <a
-            href="{{ url_for('task') }}"
+            href="{{ url_for('todo') }}"
             class="btn"
             style="
               background-color: #41c9e2;
@@ -35,7 +41,7 @@
             "
           >
             <span style="color: #ffd600">&#11088;</span>
-            GET STARTED
+            Next
             <span style="color: #ffd600">&#11088;</span>
           </a>
         </div>
@@ -47,5 +53,5 @@
       integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
       crossorigin="anonymous"
     ></script>
-</body>
+  </body>
 </html>

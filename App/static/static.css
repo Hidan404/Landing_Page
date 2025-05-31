@@ -5,12 +5,15 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     background-color: #1B1A55;
 }
+
 .distancia_top {
     margin-top: 14rem;
 }
+
 .texto_principal {
     color: #FFFFFF;
     font-family: "Asap Condensed", sans-serif;
@@ -33,6 +36,20 @@ body {
     width: 80%;
     margin: 0 auto;
 }
+
 a {
     margin-top: 6rem;
+}
+
+/* 
+    A partir deste ponto, o estilo se refere a outra página HTML.
+    Utilize estas regras de CSS para estilizar a nova página conforme necessário.
+*/
+
+#page-title-2 {
+    word-break: break-word;
+    white-space: normal;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
 }
