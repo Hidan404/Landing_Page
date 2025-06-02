@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, url_for, redirect
 from App import app
 
 tarefas = []
@@ -21,12 +21,17 @@ def todo():
         nova_tarefa = request.form.get('tarefa')
         if nova_tarefa:
             tarefas.append(nova_tarefa)
+        return redirect(url_for('todo'))    
+    
     return render_template('todo_list.html', tarefas=tarefas)
 
 
 
-@app.route("/delete/<int:tarefa_id>")
-def delete(tarefa_id):
+@app.route("/delete", methods=['POST'])
+def delete():
+    tarefa_id = int(request.form.get('tarefa_id', -1))
+    global tarefas
     if 0 <= tarefa_id < len(tarefas):
         tarefas.pop(tarefa_id)
-    return render_template('todo_list.html', tarefas=tarefas)
+    return redirect(url_for('todo'))
+
