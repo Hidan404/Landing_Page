@@ -1,37 +1,41 @@
-from flask import Flask, render_template, request, url_for, redirect
-from App import app
+from flask import Blueprint, render_template, request, url_for, redirect
+from .models import Tarefa
+from . import db
 
-tarefas = []
+views = Blueprint('views', __name__)
 
-@app.route('/')
+@views.route('/')
 def index():
     return render_template('index.html')
 
-@app.route("/static/<path:path>")
+@views.route("/static/<path:path>")
 def static_files(path):
-    return app.send_static_file(path)
+    return views.send_static_file(path)
 
-@app.route('/task')
+@views.route('/task')
 def task():
     return render_template('task_app.html')
 
-@app.route("/todo",methods=['GET', 'POST'])
+@views.route("/todo",methods=['GET', 'POST'])
 def todo():
     if request.method == 'POST':
         nova_tarefa = request.form.get('tarefa')
         if nova_tarefa:
-            tarefas.append(nova_tarefa)
+            trefa = Tarefa(titulo=nova_tarefa)
+            db.session.add(trefa)
+            db.session.commit()
         return redirect(url_for('todo'))    
-    
+    tarefas = Tarefa.query.all()
     return render_template('todo_list.html', tarefas=tarefas)
 
 
 
-@app.route("/delete", methods=['POST'])
+@views.route("/delete", methods=['POST'])
 def delete():
     tarefa_id = int(request.form.get('tarefa_id', -1))
-    global tarefas
-    if 0 <= tarefa_id < len(tarefas):
-        tarefas.pop(tarefa_id)
+    tarefa = Tarefa.query.get(tarefa_id)
+    if tarefa:
+        db.session.delete(tarefa)
+        db.session.commit()
     return redirect(url_for('todo'))
 
