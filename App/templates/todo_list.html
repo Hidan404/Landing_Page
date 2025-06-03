@@ -36,7 +36,7 @@
               {% for tarefa in tarefas %}
                 <li>
                   {{ tarefa }}
-                  <form action="{{ url_for('delete') }}" method="post" style="display: inline;">
+                  <form action="{{ url_for('views.delete') }}" method="post" style="display: inline;">
                     <input type="hidden" name="tarefa_id" value="{{ loop.index0 }}" />
                     <button type="submit">Remover</button>
                   </form>

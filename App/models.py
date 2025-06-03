@@ -1,8 +1,6 @@
 
 from datetime import datetime
-from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy()
+from App import db
 
 class Tarefa(db.Model):
     id = db.Column(db.Integer, primary_key=True)
