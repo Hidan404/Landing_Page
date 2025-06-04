@@ -16,15 +16,16 @@ def static_files(path):
 def task():
     return render_template('task_app.html')
 
-@views.route("/todo",methods=['GET', 'POST'])
+@views.route("todo",methods=['GET', 'POST'])
 def todo():
     if request.method == 'POST':
         nova_tarefa = request.form.get('tarefa')
         if nova_tarefa:
+            print(f"Nova tarefa digitada: {nova_tarefa}")
             trefa = Tarefa(titulo=nova_tarefa)
             db.session.add(trefa)
             db.session.commit()
-        return redirect(url_for('todo'))    
+        return redirect(url_for('views.todo'))    
     tarefas = Tarefa.query.all()
     return render_template('todo_list.html', tarefas=tarefas)
 
@@ -37,5 +38,5 @@ def delete():
     if tarefa:
         db.session.delete(tarefa)
         db.session.commit()
-    return redirect(url_for('todo'))
+    return redirect(url_for('views.todo'))
 

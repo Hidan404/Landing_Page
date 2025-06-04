@@ -24,28 +24,31 @@
         <div class="container">
           <div class="row">
             <h1>Todo List</h1>
-        
+
             <!-- Formulário para adicionar nova tarefa -->
             <form action="" method="post">
               <input type="text" name="tarefa" placeholder="Nova tarefa" />
               <button type="submit">Adicionar</button>
             </form>
-        
+
             <!-- Lista de tarefas -->
             <ul>
               {% for tarefa in tarefas %}
-                <li>
-                  {{ tarefa }}
-                  <form action="{{ url_for('views.delete') }}" method="post" style="display: inline;">
-                    <input type="hidden" name="tarefa_id" value="{{ loop.index0 }}" />
-                    <button type="submit">Remover</button>
-                  </form>
-                </li>
+              <li>
+                {{ tarefa.titulo }}
+                <form method="post" action="{{ url_for('views.delete') }}">
+                  <input
+                    type="hidden"
+                    name="tarefa_id"
+                    value="{{ tarefa.id }}"
+                  />
+                  <button type="submit">Remover</button>
+                </form>
+              </li>
               {% endfor %}
             </ul>
           </div>
         </div>
-        
 
         <script
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
